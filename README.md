@@ -48,7 +48,7 @@ int main() {
 	bitset_set(flags, FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG);
 	is_set = bitset_get(flags, FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG);
 	printf("talked to malon after song? %s\n", is_set? "yeah":"nope");
-    // prints 'yeah'
+	// prints 'yeah'
 
 	// 2nd word
 	bitset_set(flags, FLAG_SAW_BOB);
