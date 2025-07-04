@@ -43,7 +43,7 @@ static int print_bits(uint16_t *words, int count)
 	printf("\n---------------------\n");
 
 	for (i = 0; i < count; i++) {
-		printf("0x%01x* ", i);
+		printf("0x%01x_ ", i);
 		print_u16_bits(words[i]);
 	}
 }
