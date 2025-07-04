@@ -11,8 +11,6 @@ to an NPC, triggered a cutscene, etc.
 In the above example, 30 * u16 words stores up to 480 flags, each ID
 (see below) is an index into this biset.
 
-oot_bitsets *must* operate on arrays io u16 words!
-
 ## Usage
 
 The entire "library" is just a few static inline functions:
