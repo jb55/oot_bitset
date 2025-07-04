@@ -10,10 +10,10 @@
  * for tracking file that tracks hundreds of one-bit flags — e.g., whether
  * you’ve talked to an NPC, triggered a cutscene, etc.
  *
- * In the above example, 30 * u16 words stores up to 480 flags, each inftable
- * ID (see below) is an index into this bitvector.
+ * In the above example, 30 * u16 words stores up to 480 flags, each biset
+ * ID (see below) is an index into this bitset.
  *
- * oot_bitsets *Must* operate on arrays io u16 words!
+ * oot_bitsets *must* operate on arrays io u16 words!
  *
  * ----------------------------------------------------------------------------
  * Encoding
