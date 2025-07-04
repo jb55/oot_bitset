@@ -37,8 +37,13 @@ int main() {
 
 	// 2nd word
 	assert(bitset_index(FLAG_SAW_BOB) == 1);
+
 	bitset_set(flags, FLAG_SAW_BOB);
 	assert(bitset_get(flags, FLAG_SAW_BOB));
+
+	bitset_clear(flags, FLAG_SAW_BOB);
+	assert(bitset_get(flags, FLAG_SAW_BOB) == 0);
+
 	bitset_set(flags, FLAG_SAW_ALICE);
 
 	printf("ok! words: 0x%04x 0x%04x\n", flags[0], flags[1]);

@@ -15,10 +15,22 @@ oot_bitsets *must* operate on arrays io u16 words!
 
 ## Usage
 
-These bitsets are very simple, all you need is an array of unsigned short/u16 words.
+The entire "library" is just a few macros:
 
-You just need to ensure you have enough storage space to store all of the bits you might
-need. OoT used 30 words to store up to 480 flags:
+```c
+#define bitset_index(flag)      ((flag) >> 4)
+#define bitset_bit(flag)        (1 << ((flag) & 0xF))
+#define bitset_word(set, flag)  (set[bitset_index(flag)])
+#define bitset_get(set, flag)   (bitset_word(set, flag) &  bitset_bit(flag))
+#define bitset_set(set, flag)   (bitset_word(set, flag) |= bitset_bit(flag))
+#define bitset_clear(set, flag) (bitset_word(set, flag) &= ~bitset_bit(flag))
+```
+
+These bitsets are very simple, all you need is an array of unsigned short/u16
+words.
+
+You just need to ensure you have enough storage space to store all of the bits
+you might need. OoT used 30 words to store up to 480 flags.
 
 ```c
 #include <stdio.h>
