@@ -13,6 +13,54 @@ In the above example, 30 * u16 words stores up to 480 flags, each ID
 
 oot_bitsets *must* operate on arrays io u16 words!
 
+## Usage
+
+These bitsets are very simple, all you need is an array of unsigned short/u16 words.
+
+You just need to ensure you have enough storage space to store all of the bits you might
+need. OoT used 30 words to store up to 480 flags:
+
+```c
+#include <stdio.h>
+#include <assert.h>
+
+#include "oot_bitset.h"
+
+enum game_events {
+	FLAG_MET_RUTO_FIRST_TIME,               // 0x00
+	FLAG_PLAYED_SONG_FOR_ADULT_MALON,       // 0x01
+	FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG,  // 0x02
+	FLAG_TALKED_TO_MALON_FIRST_TIME,        // 0x03
+	FLAG_TALKED_TO_TALON_IN_RANCH_HOUSE,    // 0x04
+	FLAG_TOLD_EPONA_IS_SCARED,              // 0x05
+	FLAG_HAS_DEKU_STICK_UPGRADE,            // 0x06
+	FLAG_HAS_DEKU_NUT_UPGRADE,              // 0x07
+
+	FLAG_SAW_BOB   = 0x10,
+	FLAG_SAW_ALICE = 0x1A,
+};
+
+int main() {
+	// we have
+	unsigned short flags[10] = {0};
+	int is_set = 0;
+
+	bitset_set(flags, FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG);
+	is_set = bitset_get(flags, FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG);
+	printf("talked to malon after song? %s\n", is_set? "yeah":"nope");
+    // prints 'yeah'
+
+	// 2nd word
+	bitset_set(flags, FLAG_SAW_BOB);
+	bitset_set(flags, FLAG_SAW_ALICE);
+
+	printf("ok! words: 0x%04x 0x%04x\n", flags[0], flags[1]);
+
+	return 1;
+}
+```
+
+
 ## Encoding
 
 Each flag is a unique 16-bit ID where:
@@ -49,15 +97,3 @@ enum FlagsOfInterest {
   FLAG_HAS_SEEN_ZELDA = 0x1A, // 2nd word, 11th bit
 }
 ```
-
-or you can just keep it simple:
-
-```c
-enum FlagsOfInterest {
-  FLAG_HAS_SEEN_BOB,
-  FLAG_HAS_SEEN_ALICE,
-  FLAG_HAS_SEEN_LINK,
-  FLAG_HAS_SEEN_ZELDA,
-}
-```
-
