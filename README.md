@@ -21,8 +21,8 @@ The entire "library" is just a few macros:
 #define bitset_index(flag)      ((flag) >> 4)
 #define bitset_bit(flag)        (1 << ((flag) & 0xF))
 #define bitset_word(set, flag)  (set[bitset_index(flag)])
-#define bitset_get(set, flag)   (bitset_word(set, flag) &  bitset_bit(flag))
-#define bitset_set(set, flag)   (bitset_word(set, flag) |= bitset_bit(flag))
+#define bitset_get(set, flag)   (bitset_word(set, flag) &   bitset_bit(flag))
+#define bitset_set(set, flag)   (bitset_word(set, flag) |=  bitset_bit(flag))
 #define bitset_clear(set, flag) (bitset_word(set, flag) &= ~bitset_bit(flag))
 ```
 
