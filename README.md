@@ -8,8 +8,8 @@ oot_bitsets ie. (`u16 bits[30]`) are compact bitsets used in Ocarina of Time
 for tracking file that tracks hundreds of one-bit flags. e.g., whether you've
 talked to an NPC, triggered a cutscene, etc.
 
-In the above example, 30 * u16 words stores up to 480 flags, each inftable ID
-(see below) is an index into this bitvector.
+In the above example, 30 * u16 words stores up to 480 flags, each ID
+(see below) is an index into this biset.
 
 oot_bitsets *must* operate on arrays io u16 words!
 
@@ -45,8 +45,8 @@ enum FlagsOfInterest {
   FLAG_HAS_SEEN_ALICE = 0x01, // 1st word, 2nd bit
 
   // you can even organize different bits by different words
-  FLAG_HAS_SEEN_LINK  = 0x10, // 2nd word, 0th bit
-  FLAG_HAS_SEEN_ZELDA = 0x1A, // 2nd word, 10th bit
+  FLAG_HAS_SEEN_LINK  = 0x10, // 2nd word, 1st bit
+  FLAG_HAS_SEEN_ZELDA = 0x1A, // 2nd word, 11th bit
 }
 ```
 

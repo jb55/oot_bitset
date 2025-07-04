@@ -34,9 +34,9 @@
  *     0x61         6      1
  *     0x1AC        26     12
  *
- *     0x75  → word 7,  bit 5
- *     0x61  → word 6,  bit 1
- *     0x1AC → word 26, bit 12
+ *     0x75  -> word 7,  bit 5
+ *     0x61  -> word 6,  bit 1
+ *     0x1AC -> word 26, bit 12
  *
  * Because hex digits are 4 bits each, you can visually parse a flag as "word:bit":
  * These can simply by increasing values in an enum:
@@ -46,8 +46,8 @@
  *   FLAG_HAS_SEEN_ALICE = 0x01, // 1st word, 2nd bit
  *
  *   // you can even organize different bits by different words
- *   FLAG_HAS_SEEN_LINK  = 0x10, // 2nd word, 0th bit
- *   FLAG_HAS_SEEN_ZELDA = 0x1A, // 2nd word, 10th bit
+ *   FLAG_HAS_SEEN_LINK  = 0x10, // 2nd word, 1st bit
+ *   FLAG_HAS_SEEN_ZELDA = 0x1A, // 2nd word, 11th bit
  * }
  *
  * or you can just keep it simple:
