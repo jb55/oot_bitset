@@ -72,6 +72,7 @@ int main() {
 
 	bitset_clear(flags, FLAG_SAW_BOB);
 	assert(bitset_get(flags, FLAG_SAW_BOB) == 0);
+	bitset_set(flags, FLAG_SAW_BOB);
 
 	bitset_set(flags, FLAG_SAW_ALICE);
 

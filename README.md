@@ -88,8 +88,9 @@ int main() {
 
 // word FEDCBA9876543210
 // ---------------------
-// 0x0* 0000000000000100
-// 0x1* 0000010000000000
+// 0x0* 0000000000000100  flags set: FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG (0x02)
+// 0x1* 0000010000000001  flags set: FLAG_SAW_BOB (0x10), FLAG_SAW_ALICE   (0x1A)
+ 
 ```
 
 
