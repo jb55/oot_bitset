@@ -96,7 +96,7 @@ int main() {
 ## Encoding
 
 Each flag is a unique 16-bit coordinate where:
-  - Upper 12 bits (flag >>  4): word index (0-29) (maximum of 4096 words)
+  - Upper 12 bits (flag >>  4): word index (0-29) (maximum of 4096 words, 65536 flags total)
   - Lower  4 bits (flag & 0xF): bit  index (0-15)
 
 ```
