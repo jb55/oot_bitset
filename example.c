@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "oot_bitset.h"
 
@@ -22,7 +23,7 @@ enum game_events {
 
 int main() {
 	// we have
-	unsigned short flags[2] = {0};
+	uint16_t flags[2] = {0};
 	bool is_set = 0;
 
 	is_set = bitset_get(flags, FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG);
