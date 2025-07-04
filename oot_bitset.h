@@ -1,19 +1,22 @@
 #ifndef OOT_BITSET_H
 #define OOT_BITSET_H
 
+#include <stdint.h>
+#include <stdbool.h>
+
 /*
  * ============================================================================
  *                               oot_bitset
  * ============================================================================
  *
- * oot_bitsets ie. (`u16 bits[30]`) are compact bitsets used in Ocarina of Time
+ * oot_bitsets ie. (`uint16_t bits[30]`) are compact bitsets used in Ocarina of Time
  * for tracking file that tracks hundreds of one-bit flags — e.g., whether
  * you’ve talked to an NPC, triggered a cutscene, etc.
  *
- * In the above example, 30 * u16 words stores up to 480 flags, each biset
+ * In the above example, 30 * uint16_t words stores up to 480 flags, each biset
  * ID (see below) is an index into this bitset.
  *
- * oot_bitsets *must* operate on arrays io u16 words!
+ * oot_bitsets *must* operate on arrays io uint16_t words!
  *
  * ----------------------------------------------------------------------------
  * Encoding
@@ -61,11 +64,26 @@
  *
  */
 
-#define bitset_index(flag)      ((flag) >> 4)
-#define bitset_bit(flag)        (1 << ((flag) & 0xF))
-#define bitset_word(set, flag)  (set[bitset_index(flag)])
-#define bitset_get(set, flag)   (bitset_word(set, flag) &   bitset_bit(flag))
-#define bitset_set(set, flag)   (bitset_word(set, flag) |=  bitset_bit(flag))
-#define bitset_clear(set, flag) (bitset_word(set, flag) &= ~bitset_bit(flag))
+#define bitset_word(set, flag)  ((set)[bitset_index(flag)])
+
+static inline uint16_t bitset_index(uint16_t flag) { 
+	return flag >> 4;
+}
+
+static inline uint16_t bitset_mask (uint16_t flag) { 
+	return (uint16_t)(1u << (flag & 0xF));
+}
+
+static inline bool bitset_get(uint16_t *set, uint16_t flag) {
+	return (bitset_word(set, flag) & bitset_mask(flag)) != 0;
+}
+
+static inline void bitset_set(uint16_t *set, uint16_t flag) {
+	bitset_word(set, flag) |= bitset_mask(flag);
+}
+
+static inline void bitset_clear(uint16_t *set, uint16_t flag) {
+	bitset_word(set, flag) &= (uint16_t)~bitset_mask(flag);
+}
 
 #endif /* OOT_BITSET_H */
