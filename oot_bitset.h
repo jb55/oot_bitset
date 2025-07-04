@@ -83,7 +83,7 @@ static inline void bitset_set(uint16_t *set, uint16_t flag) {
 }
 
 static inline void bitset_clear(uint16_t *set, uint16_t flag) {
-	bitset_word(set, flag) &= (uint16_t)~bitset_mask(flag);
+	bitset_word(set, flag) &= ~bitset_mask(flag);
 }
 
 #endif /* OOT_BITSET_H */
