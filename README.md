@@ -27,6 +27,7 @@ need. OoT used 30 words to store up to 480 flags:
 #include "oot_bitset.h"
 
 enum game_events {
+	// first word
 	FLAG_MET_RUTO_FIRST_TIME,               // 0x00
 	FLAG_PLAYED_SONG_FOR_ADULT_MALON,       // 0x01
 	FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG,  // 0x02
@@ -36,8 +37,9 @@ enum game_events {
 	FLAG_HAS_DEKU_STICK_UPGRADE,            // 0x06
 	FLAG_HAS_DEKU_NUT_UPGRADE,              // 0x07
 
-	FLAG_SAW_BOB   = 0x10,
-	FLAG_SAW_ALICE = 0x1A,
+	// second word
+	FLAG_SAW_BOB   = 0x10, // 2nd word, 1st  bit
+	FLAG_SAW_ALICE = 0x1A, // 2nd word, 11th bit
 };
 
 int main() {
