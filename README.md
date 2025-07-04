@@ -8,8 +8,6 @@ Need to pack **hundreds (or thousands) of one‑bit flags**—“talked to an NP
 
 I learned about this technique from reading the [OoT decompilation project](https://github.com/zeldaret/oot) source code.  See the [original code](https://github.com/zeldaret/oot/blob/4d2bc68bacdff06261f7a89a24b63bf4eec97487/include/save.h#L524-L552) that implements these flags for OoT's save file event information tables.
 
----
-
 ## Why use it?
 
 * **Simple, header‑only, zero deps** – drop a header (C) or add a tiny dependency (Rust). No heap, no `alloc`.
@@ -17,30 +15,6 @@ I learned about this technique from reading the [OoT decompilation project](http
 * **Zero‑cost abstractions** – branch‑free bit‑twiddling; compiles to a handful of instructions.
 * **Scalable** – need 10 flags or 10 000? Just resize the array.
 * **Intuitive indices for debugging** – 0x12 maps to first word, second bit.
-
----
-
-## Installation
-
-### C / C++
-
-1. Copy **`oot_bitset.h`** somewhere in your include path.
-2. Compile with any C99 (or later) compiler—no extra flags required.
-
-```bash
-cc -std=c99 my_game.c -o my_game
-```
-
-### Rust
-
-Add the crate to your *Cargo.toml*:
-
-```toml
-[dependencies]
-oot_bitset = "0.1"
-```
-
----
 
 ## Quick start
 
@@ -99,8 +73,6 @@ Run:
 cargo run --example basic
 ```
 
----
-
 ## API reference
 
 ### C functions & macros
@@ -128,7 +100,26 @@ pub fn bitset_word_mut(set: &mut [u16], flag: u16) -> &mut u16;
 
 All functions are `#[inline(always)]` and **panic** if the slice is too short.
 
----
+## Installation
+
+### C / C++
+
+1. Copy **`oot_bitset.h`** somewhere in your include path.
+2. Compile with any C99 (or later) compiler—no extra flags required.
+
+```bash
+cc -std=c99 my_game.c -o my_game
+```
+
+### Rust
+
+Add the crate to your *Cargo.toml*:
+
+```toml
+[dependencies]
+oot_bitset = "0.1"
+```
+
 
 ## Sizing the array
 
@@ -139,8 +130,6 @@ words     = ceil(max_flags / 16)
 
 Use as few or as many words as your project needs. *OoT* used 30 words (480 flags), but nothing stops you from using 1 word (16 flags) or 4 096 words (65 536 flags).
 
----
-
 ## Flag encoding
 
 | Bits | 15…4 *(12 bits)* | 3…0 *(4 bits)* |
@@ -150,12 +139,3 @@ Use as few or as many words as your project needs. *OoT* used 30 words (480 flag
 
 Because each hex digit is 4 bits, you can read a flag as “word\:bit”.
 Example: `0x1AC` → word 26, bit 12.
-
----
-
-## Example output
-
-```
-Words[0] = 0x0004   // FLAG_TALKED_TO_MALON_FIRST_TIME
-Words[1] = 0x0401   // FLAG_SAW_BOB | FLAG_SAW_ALICE
-```
