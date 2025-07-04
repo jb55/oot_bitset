@@ -1,7 +1,8 @@
 # OoT Bitset
 
 *A no‑frills, zero‑overhead flag system inspired by **The Legend of Zelda: Ocarina of Time***
-**Now available in C / C++ *and* Rust**
+
+**Implemented in C / C++, *and* Rust**
 
 Need to pack **hundreds (or thousands) of one‑bit flags**—“talked to an NPC”, “opened a chest”, etc.—into a save file without wasting bytes?  *Ocarina of Time* solved this by storing flags in an array of `uint16_t` words. **oot\_bitset** offers the same trick in either language, with zero runtime overhead.
 
