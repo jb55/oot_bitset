@@ -71,7 +71,7 @@ static inline uint16_t bitset_index(uint16_t flag) {
 }
 
 static inline uint16_t bitset_mask (uint16_t flag) { 
-	return (uint16_t)(1u << (flag & 0xF));
+	return 1u << (flag & 0xF);
 }
 
 static inline bool bitset_get(uint16_t *set, uint16_t flag) {
