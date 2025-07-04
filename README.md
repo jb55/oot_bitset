@@ -9,7 +9,7 @@ save files that tracks hundreds of one-bit flags. e.g., whether you've talked
 to an NPC, triggered a cutscene, etc.
 
 In the above example, 30 * u16 words stores up to 480 flags, each ID
-(see below) is an index into this biset.
+(see below) is an index into this bitset.
 
 ## Usage
 
