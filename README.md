@@ -39,8 +39,7 @@ static inline void bitset_clear(uint16_t *set, uint16_t flag) {
 }
 ```
 
-These bitsets are very simple, all you need is an array of unsigned short/u16
-words.
+These bitsets are very simple, all you need is an array of uint16_t words.
 
 You just need to ensure you have enough storage space to store all of the bits
 you might need. OoT used 30 words to store up to 480 flags.
@@ -69,7 +68,7 @@ enum game_events {
 
 int main() {
 	// we have
-	unsigned short flags[10] = {0};
+	uint16_t flags[10] = {0};
 	int is_set = 0;
 
 	bitset_set(flags, FLAG_TALKED_TO_ADULT_MALON_AFTER_SONG);
