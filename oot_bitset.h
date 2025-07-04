@@ -64,24 +64,75 @@
  *
  */
 
+/**
+ * @brief Return a reference to the 16-bit word that contains @p flag.
+ *
+ * @param set  Pointer to the first element of the bitset (array of `uint16_t`
+ *             words).
+ * @param flag Encoded 16-bit flag ID.
+ * @return     L-value referring to the relevant word in the bitset.
+ *
+ * @warning This macro evaluates its arguments more than once; pass only
+ *          side-effect-free expressions.
+ */
 #define bitset_word(set, flag)  ((set)[bitset_index(flag)])
 
+/**
+ * @brief Extract the word index from an encoded flag ID.
+ *
+ * The upper twelve bits of a flag encode the index of the 16‑bit word that
+ * stores the flag. `bitset_index()` isolates those bits.
+ *
+ * @param flag Encoded 16‑bit flag ID.
+ * @return     Zero‑based word index (0 – 4095).
+ */
 static inline uint16_t bitset_index(uint16_t flag) { 
 	return flag >> 4;
 }
 
+/**
+ * @brief Convert a flag ID to a single‑bit mask.
+ *
+ * The lower four bits of @p flag specify which bit inside the word is used. The
+ * resulting mask has exactly one bit set; e.g. a bit index of 5 yields
+ * `0x0020`.
+ *
+ * @param flag Encoded 16‑bit flag ID.
+ * @return     16‑bit mask with a single bit set.
+ */
 static inline uint16_t bitset_mask (uint16_t flag) { 
 	return 1u << (flag & 0xF);
 }
 
+/**
+ * @brief Test whether a flag is set.
+ *
+ * @param set  Pointer to the first element of the bitset (array of
+ *             `uint16_t` words). The array must contain at least
+ *             `bitset_index(flag) + 1` elements.
+ * @param flag Encoded 16‑bit flag ID.
+ * @return     `true` if the bit is currently set; `false` otherwise.
+ */
 static inline bool bitset_get(uint16_t *set, uint16_t flag) {
 	return (bitset_word(set, flag) & bitset_mask(flag)) != 0;
 }
 
+/**
+ * @brief Set (enable) a flag.
+ *
+ * @param set  Pointer to the bitset array.
+ * @param flag Encoded flag ID.
+ */
 static inline void bitset_set(uint16_t *set, uint16_t flag) {
 	bitset_word(set, flag) |= bitset_mask(flag);
 }
 
+/**
+ * @brief Clear (disable) a flag.
+ *
+ * @param set  Pointer to the bitset array.
+ * @param flag Encoded flag ID.
+ */
 static inline void bitset_clear(uint16_t *set, uint16_t flag) {
 	bitset_word(set, flag) &= ~bitset_mask(flag);
 }
