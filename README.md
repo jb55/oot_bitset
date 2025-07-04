@@ -6,6 +6,8 @@
 
 Need to pack **hundreds (or thousands) of one‑bit flags**—“talked to an NPC”, “opened a chest”, etc.—into a save file without wasting bytes?  *Ocarina of Time* solved this by storing flags in an array of `uint16_t` words. **oot\_bitset** offers the same trick!
 
+I learned about this technique from reading the [OoT decompilation project](https://github.com/zeldaret/oot) source code.  See the [original code](https://github.com/zeldaret/oot/blob/4d2bc68bacdff06261f7a89a24b63bf4eec97487/include/save.h#L524-L552) that implements these flags for OoT's save file event information tables.
+
 ---
 
 ## Why use it?
