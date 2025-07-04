@@ -15,15 +15,30 @@ oot_bitsets *must* operate on arrays io u16 words!
 
 ## Usage
 
-The entire "library" is just a few macros:
+The entire "library" is just a few static inline functions:
 
 ```c
-#define bitset_index(flag)      ((flag) >> 4)
-#define bitset_bit(flag)        (1 << ((flag) & 0xF))
-#define bitset_word(set, flag)  (set[bitset_index(flag)])
-#define bitset_get(set, flag)   (bitset_word(set, flag) &   bitset_bit(flag))
-#define bitset_set(set, flag)   (bitset_word(set, flag) |=  bitset_bit(flag))
-#define bitset_clear(set, flag) (bitset_word(set, flag) &= ~bitset_bit(flag))
+#define bitset_word(set, flag)  ((set)[bitset_index(flag)])
+
+static inline uint16_t bitset_index(uint16_t flag) { 
+	return flag >> 4;
+}
+
+static inline uint16_t bitset_mask (uint16_t flag) { 
+	return 1u << (flag & 0xF);
+}
+
+static inline bool bitset_get(uint16_t *set, uint16_t flag) {
+	return (bitset_word(set, flag) & bitset_mask(flag)) != 0;
+}
+
+static inline void bitset_set(uint16_t *set, uint16_t flag) {
+	bitset_word(set, flag) |= bitset_mask(flag);
+}
+
+static inline void bitset_clear(uint16_t *set, uint16_t flag) {
+	bitset_word(set, flag) &= ~bitset_mask(flag);
+}
 ```
 
 These bitsets are very simple, all you need is an array of unsigned short/u16
