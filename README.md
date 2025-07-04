@@ -5,8 +5,8 @@ Ocarina of Time has a succinct data structure for storing many flags in a
 compact way.
 
 oot_bitsets ie. (`u16 bits[30]`) are compact bitsets used in Ocarina of Time
-for tracking file that tracks hundreds of one-bit flags. e.g., whether you've
-talked to an NPC, triggered a cutscene, etc.
+save files that tracks hundreds of one-bit flags. e.g., whether you've talked
+to an NPC, triggered a cutscene, etc.
 
 In the above example, 30 * u16 words stores up to 480 flags, each ID
 (see below) is an index into this biset.
