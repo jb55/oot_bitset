@@ -1,0 +1,7 @@
+[package]
+name = "oot_bitset"
+version = "0.1.0"
+edition = "2024"
+description = "A no‑frills, zero‑overhead bit flag system"
+
+[dependencies]
