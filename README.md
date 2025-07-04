@@ -51,8 +51,9 @@ oot_bitset = "0.1"
 enum GameEvents {
     FLAG_MET_RUTO_FIRST_TIME        = 0x00, // word 0, bit 0
     FLAG_TALKED_TO_MALON_FIRST_TIME = 0x02, // word 0, bit 2
-    FLAG_SAW_BOB   = 0x10,                  // word 1, bit 0
-    FLAG_SAW_ALICE = 0x1A                   // word 1, bit 10
+    ..
+    FLAG_SAW_BOB                    = 0x10, // word 1, bit 0
+    FLAG_SAW_ALICE                  = 0x1A  // word 1, bit 10
 };
 
 int main(void) {
