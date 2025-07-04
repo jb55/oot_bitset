@@ -21,6 +21,33 @@ enum game_events {
 	FLAG_SAW_ALICE = 0x1A,
 };
 
+static int print_u16_bits(uint16_t word)
+{
+	int i;
+	uint16_t mask;
+	for (i = 0; i < 16; i++) {
+		mask = 1 << (15-i);
+		printf("%s", (mask & word) == mask ? "1" : "0");
+	}
+
+	printf("\n");
+}
+
+static int print_bits(uint16_t *words, int count)
+{
+	int i;
+	printf("word ");
+	for (i = 0; i < 16; i++) {
+		printf("%X", 15-i);
+	}
+	printf("\n---------------------\n");
+
+	for (i = 0; i < count; i++) {
+		printf("0x%01x* ", i);
+		print_u16_bits(words[i]);
+	}
+}
+
 int main() {
 	// we have
 	uint16_t flags[2] = {0};
@@ -48,7 +75,7 @@ int main() {
 
 	bitset_set(flags, FLAG_SAW_ALICE);
 
-	printf("ok! words: 0x%04x 0x%04x\n", flags[0], flags[1]);
+	print_bits(flags, 2);
 
 	return 1;
 }
