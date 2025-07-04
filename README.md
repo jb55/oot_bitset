@@ -13,7 +13,7 @@ Need to pack **hundreds (or thousands) of one‑bit flags**—“talked to an NP
 * **Space‑efficient** – 1 × `u16` word ≙ 16 flags. Scale from 1 to 4096 words (65 536 flags).
 * **Zero‑cost abstractions** – branch‑free bit‑twiddling; compiles to a handful of instructions.
 * **Header‑only / single‑crate** – drop a header (C) or add a tiny dependency (Rust). No heap, no `alloc`.
-* **Infinitely scalable** – need 10 flags or 10 000? Just resize the array.
+* **Scalable** – need 10 flags or 10 000? Just resize the array.
 * **Intuitive indices for debugging** – 0x12 maps to first word, second bit.
 
 ---
