@@ -12,9 +12,25 @@ I learned about this technique from reading the [OoT decompilation project](http
 
 * **Simple, header‑only, zero deps** – drop a header (C) or add a tiny dependency (Rust). No heap, no `alloc`.
 * **Space‑efficient** – 1 × `u16` word ≙ 16 flags. Scale from 1 to 4096 words (65 536 flags).
-* **Zero‑cost abstractions** – branch‑free bit‑twiddling; compiles to a handful of instructions.
+* **Fast** – branch‑free bit‑twiddling; compiles to a handful of instructions.
 * **Scalable** – need 10 flags or 10 000? Just resize the array.
 * **Intuitive indices for debugging** – 0x12 maps to first word, second bit.
+
+## Why its cool
+
+The most novel aspect of OoT bitsets is that the first 4 bits in the 16-bit
+coordinate IDs index which bit is set. For example, 0xA5 shows that the 5th bit
+is set in the 10th word of the array of 16-bit integers. This only works in the
+16-bit representation! 32 bit words would need 5 bits to index the bit, which
+wouldn't map cleanly to a nibble for debugging.
+
+| Bits | 15…4 *(12 bits)* | 3…0 *(4 bits)* |
+| ---- | ---------------- | -------------- |
+| Use  | **word index**   | **bit index**  |
+| Max  | 0–4095 words     | 0–15 bits      |
+
+Because each hex digit is 4 bits, you can read a flag as “word\:bit”.
+Example: `0x1AC` → word 26, bit 12.
 
 ## Quick start
 
@@ -129,13 +145,3 @@ words     = ceil(max_flags / 16)
 ```
 
 Use as few or as many words as your project needs. *OoT* used 30 words (480 flags), but nothing stops you from using 1 word (16 flags) or 4 096 words (65 536 flags).
-
-## Flag encoding
-
-| Bits | 15…4 *(12 bits)* | 3…0 *(4 bits)* |
-| ---- | ---------------- | -------------- |
-| Use  | **word index**   | **bit index**  |
-| Max  | 0–4095 words     | 0–15 bits      |
-
-Because each hex digit is 4 bits, you can read a flag as “word\:bit”.
-Example: `0x1AC` → word 26, bit 12.
