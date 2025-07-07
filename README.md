@@ -35,7 +35,7 @@ Example: `0x1AC` → word 26, bit 12.
 Because the nibbles map so cleanly, you can create UIs that visually
 map these coordinates to an editor:
 
-![https://cdn.jb55.com/s/3755d5d65ac37563.png]()
+![bitset ui](https://cdn.jb55.com/s/3755d5d65ac37563.png)
 
 ## Quick start
 
