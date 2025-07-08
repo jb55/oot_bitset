@@ -1,6 +1,6 @@
 # OoT Bitset
 
-*A no‑frills, zero‑overhead flag system inspired by **The Legend of Zelda: Ocarina of Time***
+*The simple, no‑frills flag system used in **The Legend of Zelda: Ocarina of Time***
 
 **Implemented in C / C++, *and* Rust**
 
