@@ -18,11 +18,14 @@ I learned about this technique from reading the [OoT decompilation project](http
 
 ## Why its cool
 
-The most novel aspect of OoT bitsets is that the first 4 bits in the 16-bit
-coordinate IDs index which bit is set. For example, 0xA5 shows that the 5th bit
-is set in the 10th word of the array of 16-bit integers. This only works in the
-16-bit representation! 32 bit words would need 5 bits to index the bit, which
-wouldn't map cleanly to a nibble for debugging.
+The most interesting aspect of OoT bitsets is that the first 4 bits in the
+16-bit coordinate IDs index which bit is set. For example, 0xA5 shows that the
+5th bit is set in the 10th word of the array of 16-bit integers. This only
+works in the 16-bit representation! 32 bit words would need 5 bits to index the
+bit, which wouldn't map cleanly to a nibble for debugging.
+
+Hacker news folks say this is not that new or interesting, but I thought it
+was! I hope some others find it interesting as well.
 
 | Bits | 15…4 *(12 bits)* | 3…0 *(4 bits)* |
 | ---- | ---------------- | -------------- |
