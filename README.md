@@ -19,7 +19,7 @@ I learned about this technique from reading the [OoT decompilation project](http
 ## Why its cool
 
 One clever aspect of how Ocarina of Time uses bitsets is that the first 4 bits
-of a 16-bit coordinate ID directly indicate which bit is set. For example, the
+of a 16-bit flag ID directly indicate which bit is set. For example, the
 ID 0xA5 means “set the 5th bit of the 10th 16-bit word” — the A (10 in decimal)
 selects the 10th word, and the 5 selects the 5th bit within that word.
 
