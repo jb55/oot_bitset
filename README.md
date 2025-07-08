@@ -10,11 +10,15 @@ I learned about this technique from reading the [OoT decompilation project](http
 
 ## Why use it?
 
+The bitset used in OoT is the simplest possible implementation of a bitset. It
+is not new or novel. It is not fancy or full of features, but it has some nice
+properties that is *good enough* for many use cases.
+
 * **Simple, header‑only, zero deps** – drop a header (C) or add a tiny dependency (Rust). No heap, no `alloc`.
-* **Space‑efficient** – 1 × `u16` word ≙ 16 flags. Scale from 1 to 4096 words (65 536 flags).
+* **Space‑efficient** – 1 × `u16` word = 16 flags. Scale from 1 to 4096 words (65 536 flags).
 * **Fast** – branch‑free bit‑twiddling; compiles to a handful of instructions.
 * **Scalable** – need 10 flags or 10 000? Just resize the array.
-* **Intuitive indices for debugging** – 0x12 maps to first word, second bit.
+* **Intuitive IDs for debugging** – 0x12 maps to first word, second bit.
 
 ## Why its cool
 
