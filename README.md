@@ -28,6 +28,8 @@ any bit within a 16-bit word, and it also aligns nicely with a nibble for
 debugging. If you switched to 32-bit words, you’d need 5 bits to index the bits
 within the word, which no longer fits cleanly into a single nibble.
 
+TL;DR: The ID of flag is the coordinate of the bit position!
+
 Hacker news folks say this is not that new or interesting, but I thought it
 was! I hope some others find it interesting as well.
 
