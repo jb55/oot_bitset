@@ -30,9 +30,6 @@ within the word, which no longer fits cleanly into a single nibble.
 
 TL;DR: The flag ID encodes both the word and the bit — it’s the coordinate of the bit!
 
-Hacker news folks say this is not that new or interesting, but I thought it
-was! I hope some others find it interesting as well.
-
 | Bits | 15…4 *(12 bits)* | 3…0 *(4 bits)* |
 | ---- | ---------------- | -------------- |
 | Use  | **word index**   | **bit index**  |
@@ -42,6 +39,9 @@ These form a grid, and you can create UIs that visually map these coordinates
 to a visual editor:
 
 ![bitset ui](https://cdn.jb55.com/s/3755d5d65ac37563.png)
+
+Hacker news folks say this is not that new or interesting, but I thought it
+was! I hope some others find it interesting as well.
 
 ## Quick start
 
