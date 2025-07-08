@@ -38,9 +38,6 @@ was! I hope some others find it interesting as well.
 | Use  | **word index**   | **bit index**  |
 | Max  | 0–4095 words     | 0–15 bits      |
 
-Because each hex digit is 4 bits, you can read a flag as “word\:bit”.
-Example: `0x1AC` → word 26, bit 12.
-
 These form a grid, and you can create UIs that visually map these coordinates
 to a visual editor:
 
