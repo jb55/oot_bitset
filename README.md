@@ -20,6 +20,10 @@ properties that is *good enough* for many use cases.
 * **Scalable** – need 10 flags or 10 000? Just resize the array.
 * **Intuitive IDs for debugging** – 0x12 maps to first word, second bit.
 
+I wrapped this into a library because I haven't seen this pattern implemented
+anywhere, and wanted to have a library I could use in my projects. I also
+thought it was a neat bit of OoT lore for software engineer zelda enjoyers.
+
 ## Why its cool
 
 One clever aspect of how Ocarina of Time uses bitsets is that the first 4 bits
