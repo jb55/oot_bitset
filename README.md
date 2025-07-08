@@ -18,11 +18,15 @@ I learned about this technique from reading the [OoT decompilation project](http
 
 ## Why its cool
 
-The most interesting aspect of OoT bitsets is that the first 4 bits in the
-16-bit coordinate IDs index which bit is set. For example, 0xA5 shows that the
-5th bit is set in the 10th word of the array of 16-bit integers. This only
-works in the 16-bit representation! 32 bit words would need 5 bits to index the
-bit, which wouldn't map cleanly to a nibble for debugging.
+One clever aspect of how Ocarina of Time uses bitsets is that the first 4 bits
+of a 16-bit coordinate ID directly indicate which bit is set. For example, the
+ID 0xA5 means “set the 5th bit of the 10th 16-bit word” — the A (10 in decimal)
+selects the 10th word, and the 5 selects the 5th bit within that word.
+
+This works neatly because the word size is 16 bits: 4 bits are enough to index
+any bit within a 16-bit word, and it also aligns nicely with a nibble for
+debugging. If you switched to 32-bit words, you’d need 5 bits to index the bits
+within the word, which no longer fits cleanly into a single nibble.
 
 Hacker news folks say this is not that new or interesting, but I thought it
 was! I hope some others find it interesting as well.
